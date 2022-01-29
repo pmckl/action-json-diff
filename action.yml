@@ -12,6 +12,9 @@ inputs:
     required: true
   header_text:
     description: "Text to show as comment header (optional)"
+outputs:
+  result: 
+    description: "The result of the diff"
 runs:
   using: 'node12'
   main: 'dist/index.js'

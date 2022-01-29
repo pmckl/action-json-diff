@@ -21,13 +21,17 @@ async function run() {
     const string_b = core.getInput('string_b');
     const header_text = core.getInput('header_text');
     const result = await diff(string_a,string_b);
+    core.startGroup('Result of the diff:')
+    core.info(result)
+    core.endGroup()
+    core.setOutput("result", result);
     if(result.length > 0){
         var message = result
     }
     else{
         var message = "No diff found!"
     }
-    var body = "### "+header_text+"\n```\n"+message+"\n```"
+    var body = "### "+header_text+"\n```diff\n"+message+"\n```"
     octokit.rest.issues.createComment({
         owner,
         repo: repo,
