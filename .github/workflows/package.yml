@@ -16,7 +16,7 @@ jobs:
           ref: main
       - name: Package
         run: |
-          npm ci
+          npm i
           npm run package
       - name: Commit
         run: |
