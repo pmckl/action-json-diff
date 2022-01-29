@@ -1,0 +1,12 @@
+name: 'JSON Diff'
+description: 'Diff 2 JSON string, and issue a PR comment'
+inputs:
+  string_a:
+    description: 'Compare this'
+    required: true
+  string_b:  
+    description: 'Against this'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

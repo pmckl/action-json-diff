@@ -1,0 +1,30 @@
+{
+  "name": "action-json-diff",
+  "version": "1.0.0",
+  "description": "tbd",
+  "main": "src/index.js",
+  "scripts": {
+    "package": "ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmckl/action-json-diff.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.5",
+    "json-diff": "^0.7.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.31.1",
+    "eslint": "^8.0.0",
+    "jest": "^27.2.5"
+  }
+}
