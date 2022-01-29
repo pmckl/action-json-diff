@@ -6,7 +6,7 @@ const diff = require("./diff")
 
 async function run() {
   try {
-    const github_token = core.getInput('GITHUB_TOKEN');
+    const github_token = core.getInput('github_token');
     const context = github.context;
     const pull_request_number = context.payload.pull_request.number;
     const octokit = new github.GitHub(github_token);

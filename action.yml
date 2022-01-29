@@ -7,6 +7,9 @@ inputs:
   string_b:  
     description: 'Against this'
     required: true
+  github_token:
+    description: "Github token, to get context"
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
