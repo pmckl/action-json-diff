@@ -29,7 +29,7 @@ async function run() {
         owner,
         repo: repo,
         issue_number: pull_request_number,
-        message
+        body: message
       })
   } catch (error) {
     core.setFailed(error.message);
