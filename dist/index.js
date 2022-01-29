@@ -15808,7 +15808,7 @@ async function run() {
     else{
         var message = "No diff found"
     }
-    octokit.issues.createComment({
+    octokit.rest.issues.createComment({
         owner,
         repo: repo,
         issue_number: pull_request_number,
