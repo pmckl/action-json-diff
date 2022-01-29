@@ -15818,7 +15818,7 @@ async function run() {
     else{
         var message = "No diff found!"
     }
-    var body = "###"+header_text+"\n```"+message+"```"
+    var body = "### "+header_text+"\n```\n"+message+"\n```"
     octokit.rest.issues.createComment({
         owner,
         repo: repo,
