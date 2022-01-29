@@ -12,20 +12,22 @@ async function run() {
     const octokit = github.getOctokit(github_token)
     const owner = context.payload.sender.login
     const repo = context.payload.repository.name
+
     if (context.payload.pull_request == null) {
-        core.warning('This action ment to be used on pull requests, but not found in the context!');
+        core.warning('This action meant to be used on pull requests, but not found in the context!');
         return;
     }
     const string_a = core.getInput('string_a');
     const string_b = core.getInput('string_b');
+    const header_text = core.getInput('header_text');
     const result = await diff(string_a,string_b);
     if(result.length > 0){
         var message = result
     }
     else{
-        var message = "No diff found"
+        var message = "No diff found!"
     }
-    var body = "**Header**\n"+message
+    var body = "###"+header_text+"\n```"+message+"```"
     octokit.rest.issues.createComment({
         owner,
         repo: repo,

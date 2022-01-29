@@ -10,6 +10,8 @@ inputs:
   github_token:
     description: "Github token, to get context"
     required: true
+  header_text:
+    description: "Text to show as comment header (optional)"
 runs:
   using: 'node12'
   main: 'dist/index.js'

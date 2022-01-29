@@ -8,8 +8,14 @@ let diff = function (string_a,string_b) {
       if (string_b.length === 0) {
         throw new Error('String B is empty');
       }
-      const obj_a = JSON.parse(string_a)
-      const obj_b = JSON.parse(string_b)
+      try{
+        var obj_a = JSON.parse(string_a)
+        var obj_b = JSON.parse(string_b)
+      }
+      catch(Err){
+        throw new Error('One of the provided strings is not a valid json');
+      }
+      
       const diff = json_diff.diffString(obj_a, obj_b, {color:false})
       resolve(diff);
     });
