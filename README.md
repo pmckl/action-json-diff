@@ -13,6 +13,11 @@ If you are using this action outside of a PR it will only log the diff.
 ### Outputs
 - `result`: The result of the diff, if no diff found it will be an empty string.
 
+### Result
+
+<img width="931" alt="Screenshot 2022-01-29 at 22 15 47" src="https://user-images.githubusercontent.com/937778/151677787-0a1a5e50-7f36-490f-bee2-588f983c9a02.png">
+
+
 ### Example
 
 ```yaml
@@ -39,3 +44,4 @@ jobs:
           string_b: "${{ steps.readfile_b.outputs.content }}"
           header_text: "Diff for file_a.json and file_b.json"
 ```
+
