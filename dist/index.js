@@ -15603,7 +15603,9 @@ let diff = function (string_a,string_b) {
       if (string_b.length === 0) {
         throw new Error('String B is empty');
       }
-      const diff = json_diff.diffString(string_a, string_b, {color:false})
+      const obj_a = JSON.parse(string_a)
+      const obj_b = JSON.parse(string_b)
+      const diff = json_diff.diffString(obj_a, obj_b, {color:false})
       resolve(diff);
     });
   };
