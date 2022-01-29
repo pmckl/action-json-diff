@@ -15792,7 +15792,7 @@ async function run() {
     const github_token = core.getInput('github_token');
     const context = github.context;
     const pull_request_number = context.payload.pull_request.number;
-    const octokit = new github.GitHub(github_token);
+    const octokit = github.getOctokit(github_token)
     const owner = context.payload.sender.login
     const repo = context.payload.repository.name
     if (context.payload.pull_request == null) {
