@@ -15603,8 +15603,14 @@ let diff = function (string_a,string_b) {
       if (string_b.length === 0) {
         throw new Error('String B is empty');
       }
-      const obj_a = JSON.parse(string_a)
-      const obj_b = JSON.parse(string_b)
+      try{
+        var obj_a = JSON.parse(string_a)
+        var obj_b = JSON.parse(string_b)
+      }
+      catch(Err){
+        throw new Error('One of the provided strings is not a valid json');
+      }
+      
       const diff = json_diff.diffString(obj_a, obj_b, {color:false})
       resolve(diff);
     });
@@ -15797,20 +15803,22 @@ async function run() {
     const octokit = github.getOctokit(github_token)
     const owner = context.payload.sender.login
     const repo = context.payload.repository.name
+
     if (context.payload.pull_request == null) {
-        core.warning('This action ment to be used on pull requests, but not found in the context!');
+        core.warning('This action meant to be used on pull requests, but not found in the context!');
         return;
     }
     const string_a = core.getInput('string_a');
     const string_b = core.getInput('string_b');
+    const header_text = core.getInput('header_text');
     const result = await diff(string_a,string_b);
     if(result.length > 0){
         var message = result
     }
     else{
-        var message = "No diff found"
+        var message = "No diff found!"
     }
-    var body = "**Header**\n"+message
+    var body = "###"+header_text+"\n```"+message+"```"
     octokit.rest.issues.createComment({
         owner,
         repo: repo,
