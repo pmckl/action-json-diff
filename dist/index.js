@@ -15808,11 +15808,12 @@ async function run() {
     else{
         var message = "No diff found"
     }
+    var body = "**Header**\n"+message
     octokit.rest.issues.createComment({
         owner,
         repo: repo,
         issue_number: pull_request_number,
-        body: message
+        body: body
       })
   } catch (error) {
     core.setFailed(error.message);
